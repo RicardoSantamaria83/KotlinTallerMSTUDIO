@@ -25,9 +25,9 @@ class ProductsRepository(application: Application) {
         return Product(name, price)
     }
 
-    suspend fun addProductToCart(name: String, price: String) = withContext(Dispatchers.IO) {
+    suspend fun addProductToCart(name: String, price: String, quantity: Int = 1) = withContext(Dispatchers.IO) {
         db?.productDao()?.addProduct(
-            ProductDB(0, name, 100, "", "", 1, "", false)
+            ProductDB(0, name, 100, "", "", quantity, "", false)
         )
     }
 

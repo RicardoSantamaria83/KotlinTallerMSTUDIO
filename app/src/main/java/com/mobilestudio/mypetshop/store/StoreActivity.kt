@@ -47,11 +47,11 @@ class StoreActivity : AppCompatActivity() {
         adapterProducts.setOnItemClick { product ->
             Log.e("ACTIVITY", "${product.name}")
             Log.e("ACTIVITY", "${product.price}")
-//            val intent = Intent(this, DetailProductActivity::class.java)
-//            intent.putExtra(DetailProductActivity.KEY_NAME, product.name)
-//            intent.putExtra(DetailProductActivity.KEY_PRICE, product.price)
-//            startActivity(intent)
-            viewModel.addProduct(product.name, product.price)
+            val intent = Intent(this, DetailProductActivity::class.java)
+            intent.putExtra(DetailProductActivity.KEY_NAME, product.name)
+            intent.putExtra(DetailProductActivity.KEY_PRICE, product.price)
+            startActivity(intent)
+            //viewModel.addProduct(product.name, product.price)
         }
     }
 

@@ -15,13 +15,16 @@ class DetailProductActivity : AppCompatActivity() {
 
     private val viewModel: DetailProductViewModel by viewModels()
 
+    var name = ""
+    var price = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         intent?.extras?.let { bundle ->
-            val name = bundle.getString(KEY_NAME, "")
-            val price = bundle.getString(KEY_PRICE, "")
+            name = bundle.getString(KEY_NAME, "")
+            price = bundle.getString(KEY_PRICE, "")
             binding.txtProductName.text = name
             binding.txtProductPrice.text = "$price"
         }
@@ -48,6 +51,10 @@ class DetailProductActivity : AppCompatActivity() {
 
         binding.btnMinusQuantity.setOnClickListener {
             viewModel.minusQuantity()
+        }
+
+        binding.btnProductAddCart.setOnClickListener {
+            viewModel.addProductToCart(name, price)
         }
     }
 
